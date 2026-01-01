@@ -1,6 +1,5 @@
 [versions]
 androidJunit = "1.3.0"
-androidx-activity = "1.12.2"
 androidx_lifecycle = "2.9.6"
 appcompat = "1.7.1"
 coil = "3.3.0"

@@ -38,7 +38,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.runtime.compose)
 
-            implementation(project(":library"))
+            implementation(project(":assistant"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -47,11 +47,11 @@ kotlin {
 }
 
 android {
-    namespace = "de.neofonie.myapplication"
+    namespace = "com.sjaindl.app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "de.neofonie.myapplication"
+        applicationId = "com.sjaindl.app"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
