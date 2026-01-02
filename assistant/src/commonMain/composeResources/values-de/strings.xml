@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">Zurück</string>
+    <string name="ai_assistant_title">Mein Assistant</string>
+    <string name="reset">Zurücksetzen</string>
+
+    <string name="chat">Chat</string>
+    <string name="chatbot_icon">Chatbot-Symbol</string>
+    <string name="prompt_label">Frag mich etwas...</string>
+
+    <string name="errorTitle">Es ist ein Fehler aufgetreten</string>
+    <string name="errorDescription">Derzeit können keine Daten angezeigt werden</string>
+    <string name="retry">Erneut versuchen</string>
+</resources>

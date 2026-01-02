@@ -28,6 +28,7 @@ okhttp = "5.3.2"
 turbine = "1.2.1"
 androidx-espresso-core = "3.7.0"
 vanniktech_maven_publish = "0.35.0"
+navigationCompose = "2.9.6"
 
 [libraries]
 android_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -74,6 +75,7 @@ okhttp_loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-in
 test_androidJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJunit" }
 test_junit = { group = "junit", name = "junit", version.ref = "junit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
@@ -81,7 +83,7 @@ android_kotlin_multiplatform_library = { id = "com.android.kotlin.multiplatform.
 kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose_multiplatform = { id = "org.jetbrains.compose", version.ref = "compose_multiplatform" }
 compose_compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.vanniktech.maven.publish)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.sjaindl.assistant"
@@ -24,6 +25,10 @@ kotlin {
         withHostTestBuilder {}.configure {}
         withDeviceTestBuilder {
             sourceSetTreeName = "test"
+        }
+
+        androidResources {
+            enable = true
         }
 
         compilations.configureEach {
