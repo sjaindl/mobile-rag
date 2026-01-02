@@ -9,13 +9,14 @@ plugins {
     alias(libs.plugins.vanniktech.maven.publish)
 }
 
-group = "io.github.kotlin"
+group = "com.sjaindl.assistant"
 version = "1.0.0"
 
 kotlin {
     jvm()
+
     androidLibrary {
-        namespace = "org.jetbrains.kotlinx.multiplatform.library.template"
+        namespace = "com.sjaindl.assistant"
         compileSdk = 36
         minSdk = 24
 
@@ -26,14 +27,13 @@ kotlin {
         }
 
         compilations.configureEach {
-            compilerOptions.configure {
-                jvmTarget.set(
-                    JvmTarget.JVM_11
-                )
+            compileTaskProvider.configure {
+                compilerOptions {
+                    jvmTarget.set(JvmTarget.JVM_11)
+                }
             }
         }
     }
-    iosX64()
     iosArm64()
     iosSimulatorArm64()
 
@@ -84,7 +84,7 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "library", version.toString())
+    coordinates(group.toString(), "assistant", version.toString())
 
     pom {
         name = "My library"

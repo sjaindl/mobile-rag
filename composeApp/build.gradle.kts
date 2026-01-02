@@ -8,6 +8,8 @@ plugins {
 }
 
 kotlin {
+    jvm()
+
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -30,6 +32,15 @@ kotlin {
             implementation(libs.compose.activity)
         }
         commonMain.dependencies {
+            val koinBom = project.dependencies.platform(libs.koin.bom)
+            val koinAnnotationsBom =
+                project.dependencies.platform(libs.koin.annotations.bom)
+            implementation(koinBom)
+            implementation(koinAnnotationsBom)
+            implementation(libs.koin.core)
+            implementation(libs.koin.annotations)
+            implementation(libs.koin.compose.viewmodel)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
