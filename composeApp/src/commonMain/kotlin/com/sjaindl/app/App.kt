@@ -13,8 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import multiplatform_library_template.composeapp.generated.resources.Res
-import multiplatform_library_template.composeapp.generated.resources.compose_multiplatform
+import mobile_rag.composeapp.generated.resources.Res
+import mobile_rag.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 

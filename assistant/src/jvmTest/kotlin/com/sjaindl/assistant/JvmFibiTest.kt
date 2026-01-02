@@ -1,6 +1,5 @@
 package com.sjaindl.assistant
 
-import com.sjaindl.assistant.generateFibi
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
