@@ -5,6 +5,9 @@ import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.di.assistantModule
 import mobile_rag.composeapp.generated.resources.Res
 import mobile_rag.composeapp.generated.resources.appName
+import mobile_rag.composeapp.generated.resources.sample_question_1
+import mobile_rag.composeapp.generated.resources.sample_question_2
+import mobile_rag.composeapp.generated.resources.welcome_message
 import org.koin.dsl.module
 
 val appModule = module {
@@ -16,6 +19,8 @@ val appModule = module {
                 baseUrl = "http://localhost:3000/flowise/api/v1/prediction/[chatflow-id]",
             ),
             appBarTitle = Res.string.appName,
+            sampleQuestions = listOf(Res.string.sample_question_1, Res.string.sample_question_2),
+            welcomeMessage = Res.string.welcome_message,
         )
     }
 }

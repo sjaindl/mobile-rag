@@ -14,6 +14,7 @@ import com.sjaindl.assistant.data.remote.model.Tool
 import com.sjaindl.assistant.ui.components.ChatInputControl
 import com.sjaindl.assistant.ui.components.ChatLoadingScreen
 import com.sjaindl.assistant.ui.components.MessageCard
+import com.sjaindl.assistant.ui.components.SampleQuestions
 import com.sjaindl.assistant.ui.model.ChatMessage
 import com.sjaindl.assistant.ui.model.ChatUiState
 import kotlinx.serialization.json.JsonPrimitive
@@ -23,6 +24,8 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun ChatScreen(
     modifier: Modifier = Modifier,
     uiState: ChatUiState,
+    sampleQuestions: List<String>,
+    welcomeMessage: String?,
     onSendPrompt: (String) -> Unit,
 ) {
     val listState = rememberLazyListState()
@@ -47,6 +50,23 @@ fun ChatScreen(
             modifier = Modifier
                 .weight(1f),
         ) {
+            if (uiState.messages.isEmpty() && !uiState.isLoading) {
+                welcomeMessage?.let {
+                    item {
+                        MessageCard(
+                            message = ChatMessage(
+                                text = welcomeMessage,
+                                isFromUser = false,
+                            )
+                        )
+
+                        SampleQuestions(
+                            sampleQuestions = sampleQuestions,
+                            onSendPrompt = onSendPrompt,
+                        )
+                    }
+                }
+            }
             items(items = uiState.messages) { message ->
                 MessageCard(message = message)
             }
@@ -110,6 +130,11 @@ fun ChatScreenPreview() {
                     ),
                 )
             ),
+            sampleQuestions = listOf(
+                "What is the capital of India?",
+                "What is the largest planet in our solar system?",
+            ),
+            welcomeMessage = "This is a welcome message!",
             onSendPrompt = { },
         )
     }
@@ -124,6 +149,11 @@ fun ChatScreenEmptyPreview() {
                 isLoading = false,
                 messages = emptyList(),
             ),
+            sampleQuestions = listOf(
+                "What is the capital of India?",
+                "What is the largest planet in our solar system?",
+            ),
+            welcomeMessage = "This is a welcome message!",
             onSendPrompt = { },
         )
     }

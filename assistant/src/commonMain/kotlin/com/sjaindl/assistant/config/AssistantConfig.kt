@@ -9,6 +9,8 @@ data class AssistantConfig(
     val streamingDelayMilliseconds: Long = 4L,
     val showTools: Boolean = true,
     val showSourceDocuments: Boolean = true,
+    val welcomeMessage: StringResource? = null,
+    val sampleQuestions: List<StringResource> = emptyList(),
 )
 
 sealed class Provider {

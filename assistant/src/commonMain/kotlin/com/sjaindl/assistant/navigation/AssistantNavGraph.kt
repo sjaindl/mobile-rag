@@ -12,6 +12,7 @@ import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.ui.AssistantAppBar
 import com.sjaindl.assistant.ui.ChatScreen
 import com.sjaindl.assistant.ui.ChatViewModel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 const val chatScreenRoute = "ChatBot"
@@ -39,6 +40,12 @@ fun NavGraphBuilder.assistantGraph(
                 modifier = Modifier
                     .padding(paddingValues = it),
                 uiState = uiState,
+                sampleQuestions = config.sampleQuestions.map { resource ->
+                    stringResource(resource = resource)
+                },
+                welcomeMessage = config.welcomeMessage?.let { resource ->
+                    stringResource(resource = resource)
+                },
                 onSendPrompt = chatViewModel::sendPrompt,
             )
         }

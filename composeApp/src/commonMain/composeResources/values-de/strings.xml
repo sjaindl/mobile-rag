@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="appName" translatable="false">Invest Copilot</string>
+
+    <string name="sample_question_1">Welche Aktien haben dieses Monat die beste Performance?</string>
+    <string name="sample_question_2">Zeige mir den NVDA-Chart für die letzten 6 Monate</string>
+    <string name="welcome_message">Willkommen bei Invest Copilot! Wie kann ich heute helfen?</string>
 </resources>
