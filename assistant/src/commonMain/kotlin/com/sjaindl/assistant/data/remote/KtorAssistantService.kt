@@ -4,6 +4,7 @@ import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.data.remote.model.FlowiseRequest
 import com.sjaindl.assistant.data.remote.model.FlowiseResponse
+import com.sjaindl.assistant.data.remote.model.OverrideConfig
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.request.post
@@ -39,6 +40,7 @@ class KtorAssistantService : AssistantService, KoinComponent {
                     question = prompt,
                     chatId = chatId,
                     streaming = streaming,
+                    overrideConfig = OverrideConfig()
                 )
             )
         }

@@ -91,6 +91,31 @@ class ChatViewModel(
                                 currentState
                             }
 
+                            is FlowiseResponse.UsedTools -> {
+                                if (config.showTools) {
+                                    val lastMessage = currentState.messages.last()
+
+                                    val updatedMessages = currentState.messages.toMutableList()
+                                    updatedMessages[currentState.messages.lastIndex] = lastMessage.copy(usedTools = response.data)
+                                    currentState.copy(messages = updatedMessages)
+
+                                } else {
+                                    currentState
+                                }
+                            }
+
+                            is FlowiseResponse.SourceDocuments -> {
+                                if (config.showSourceDocuments) {
+                                    val lastMessage = currentState.messages.last()
+
+                                    val updatedMessages = currentState.messages.toMutableList()
+                                    updatedMessages[currentState.messages.lastIndex] = lastMessage.copy(sourceDocuments = response.data)
+                                    currentState.copy(messages = updatedMessages)
+                                } else {
+                                    currentState
+                                }
+                            }
+
                             is FlowiseResponse.Error -> {
                                 currentState.copy(error = response.data)
                             }

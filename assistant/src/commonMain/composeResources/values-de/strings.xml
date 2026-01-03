@@ -11,4 +11,13 @@
     <string name="errorTitle">Es ist ein Fehler aufgetreten</string>
     <string name="errorDescription">Derzeit können keine Daten angezeigt werden</string>
     <string name="retry">Erneut versuchen</string>
+
+    <string name="used_tools">Verwendete Tools (%1$d)</string>
+    <string name="source_documents">Quelldokumente (%1$d)</string>
+    <string name="source_documents_title">Quelldokumente</string>
+    <string name="close">Schließen</string>
+    <string name="tools_title">Tools</string>
+    <string name="tool_name">Tool: %1$s</string>
+    <string name="tool_input">Input: %1$s</string>
+    <string name="tool_output">Output: %1$s</string>
 </resources>

@@ -9,11 +9,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import com.sjaindl.assistant.data.remote.model.SourceDocument
+import com.sjaindl.assistant.data.remote.model.Tool
 import com.sjaindl.assistant.ui.components.ChatInputControl
 import com.sjaindl.assistant.ui.components.ChatLoadingScreen
+import com.sjaindl.assistant.ui.components.MessageCard
 import com.sjaindl.assistant.ui.model.ChatMessage
 import com.sjaindl.assistant.ui.model.ChatUiState
-import com.sjaindl.assistant.ui.components.MessageCard
+import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -82,6 +85,19 @@ fun ChatScreenPreview() {
                     ChatMessage(
                         text = "The bosses are top secret!",
                         isFromUser = false,
+                        usedTools = listOf(
+                            Tool(
+                                tool = "Search",
+                                toolInput = JsonPrimitive("input"),
+                                toolOutput = "output"
+                            )
+                        ),
+                        sourceDocuments = listOf(
+                            SourceDocument(
+                                pageContent = "pageContent",
+                                metadata = JsonPrimitive("metadata")
+                            )
+                        )
                     ),
                     ChatMessage(
                         text = "And what is the next event?",

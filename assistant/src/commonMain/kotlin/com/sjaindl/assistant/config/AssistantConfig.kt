@@ -7,6 +7,8 @@ data class AssistantConfig(
     val appBarTitle: StringResource,
     val streaming: Boolean = true,
     val streamingDelayMilliseconds: Long = 4L,
+    val showTools: Boolean = true,
+    val showSourceDocuments: Boolean = true,
 )
 
 sealed class Provider {

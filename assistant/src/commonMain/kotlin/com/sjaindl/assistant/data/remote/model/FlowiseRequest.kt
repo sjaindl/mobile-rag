@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FlowiseRequest(
     val question: String,
-    val chatId: String?,
-    val streaming: Boolean?,
+    val chatId: String? = null,
+    val overrideConfig: OverrideConfig? = null,
+    val streaming: Boolean? = true,
 )
