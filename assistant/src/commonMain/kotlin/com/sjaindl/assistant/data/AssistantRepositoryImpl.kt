@@ -9,7 +9,11 @@ class AssistantRepositoryImpl(
     private val assistantService: AssistantService
 ) : AssistantRepository {
 
-    override fun getCompletion(prompt: String, chatId: String?): Flow<FlowiseResponse> {
-        return assistantService.getCompletion(prompt, chatId)
+    override fun getCompletion(prompt: String, chatId: String?, streaming: Boolean): Flow<FlowiseResponse> {
+        return assistantService.getCompletion(
+            prompt = prompt,
+            chatId = chatId,
+            streaming = streaming,
+        )
     }
 }

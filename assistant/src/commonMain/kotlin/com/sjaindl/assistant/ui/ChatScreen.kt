@@ -75,6 +75,23 @@ fun ChatScreenPreview() {
                         text = "Hello! How can I help you?",
                         isFromUser = false,
                     ),
+                    ChatMessage(
+                        text = "Who are the bosses of the club?",
+                        isFromUser = true,
+                    ),
+                    ChatMessage(
+                        text = "The bosses are top secret!",
+                        isFromUser = false,
+                    ),
+                    ChatMessage(
+                        text = "And what is the next event?",
+                        isFromUser = true,
+                    ),
+                    ChatMessage(
+                        text = "The next event is ",
+                        isFromUser = false,
+                        isTyping = true,
+                    ),
                 )
             ),
             onSendPrompt = { },

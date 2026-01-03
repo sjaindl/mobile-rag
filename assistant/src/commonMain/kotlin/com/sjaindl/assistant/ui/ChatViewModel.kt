@@ -2,11 +2,13 @@ package com.sjaindl.assistant.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.data.remote.model.FlowiseResponse
 import com.sjaindl.assistant.domain.usecase.GetAssistantCompletionUseCase
 import com.sjaindl.assistant.ui.model.ChatMessage
 import com.sjaindl.assistant.ui.model.ChatUiState
 import com.sjaindl.assistant.util.generateUUID
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
@@ -18,6 +20,7 @@ import kotlinx.coroutines.launch
 
 class ChatViewModel(
     private val getAssistantCompletionUseCase: GetAssistantCompletionUseCase,
+    private val config: AssistantConfig,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ChatUiState())
@@ -37,7 +40,7 @@ class ChatViewModel(
                 )
             }
 
-            getAssistantCompletionUseCase(prompt = prompt, chatId = chatId, streaming = false)
+            getAssistantCompletionUseCase(prompt = prompt, chatId = chatId, streaming = config.streaming)
                 .onEach { response ->
                     _uiState.update { currentState ->
                         when (response) {
@@ -50,11 +53,51 @@ class ChatViewModel(
                                 )
                             }
 
+                            is FlowiseResponse.Start -> {
+                                currentState.copy(isLoading = true)
+                            }
+
+                            is FlowiseResponse.Token -> {
+                                val lastMessage = currentState.messages.last()
+
+                                if (lastMessage.isFromUser) {
+                                    val aiMessage = ChatMessage(
+                                        text = response.data,
+                                        isFromUser = false,
+                                        isTyping = true
+                                    )
+
+                                    currentState.copy(
+                                        isLoading = false,
+                                        messages = currentState.messages + aiMessage
+                                    )
+                                } else {
+                                    val updatedMessages = currentState.messages.toMutableList()
+                                    updatedMessages[updatedMessages.lastIndex] = lastMessage.copy(text = lastMessage.text + response.data)
+                                    currentState.copy(messages = updatedMessages)
+                                }
+                            }
+
+                            is FlowiseResponse.End -> {
+                                val lastMessage = currentState.messages.last()
+
+                                val updatedMessages = currentState.messages.toMutableList()
+                                updatedMessages[updatedMessages.lastIndex] = lastMessage.copy(isTyping = false)
+                                currentState.copy(messages = updatedMessages)
+                            }
+
+                            is FlowiseResponse.Metadata -> {
+                                chatId = response.data.chatId
+                                currentState
+                            }
+
                             is FlowiseResponse.Error -> {
                                 currentState.copy(error = response.data)
                             }
                         }
                     }
+
+                    delay(config.streamingDelayMilliseconds)
                 }
                 .catch { e ->
                     _uiState.update { it.copy(error = e.message, isLoading = false) }

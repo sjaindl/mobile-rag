@@ -75,7 +75,7 @@ kotlin {
             implementation(libs.ktor.contentNegotiation)
             implementation(libs.coil.compose)
             implementation(libs.coil.ktor)
-            implementation(libs.kermit)
+            implementation(libs.logging.napier)
         }
 
         commonTest.dependencies {

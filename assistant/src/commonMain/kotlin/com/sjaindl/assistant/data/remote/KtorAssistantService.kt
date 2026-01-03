@@ -4,6 +4,7 @@ import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.data.remote.model.FlowiseRequest
 import com.sjaindl.assistant.data.remote.model.FlowiseResponse
+import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
@@ -13,6 +14,7 @@ import io.ktor.http.contentType
 import io.ktor.utils.io.readUTF8Line
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -25,7 +27,7 @@ class KtorAssistantService : AssistantService, KoinComponent {
 
     private val config: AssistantConfig by inject()
 
-    override fun getCompletion(prompt: String, chatId: String?): Flow<FlowiseResponse> = flow {
+    override fun getCompletion(prompt: String, chatId: String?, streaming: Boolean): Flow<FlowiseResponse> = flow {
         val baseUrl = when (val provider = config.provider) {
             is Provider.Flowise -> provider.baseUrl
         }
@@ -36,6 +38,7 @@ class KtorAssistantService : AssistantService, KoinComponent {
                 FlowiseRequest(
                     question = prompt,
                     chatId = chatId,
+                    streaming = streaming,
                 )
             )
         }
@@ -44,9 +47,26 @@ class KtorAssistantService : AssistantService, KoinComponent {
         while (!channel.isClosedForRead) {
             val line = channel.readUTF8Line()
 
-            if (line != null) {
-                val flowiseResponse = json.decodeFromString<FlowiseResponse.FullResponseData>(line)
-                emit(flowiseResponse)
+            if (streaming) {
+                if (line?.startsWith("data:") == true) {
+                    val data = line.removePrefix("data:").trim()
+                    try {
+                        val flowiseResponse = json.decodeFromString<FlowiseResponse>(data)
+                        emit(flowiseResponse)
+                    } catch (exception: SerializationException) {
+                        Napier.e("Error decoding response: $data", exception)
+                    }
+                }
+            } else {
+                if (line != null) {
+                    val data = line.removePrefix("data:").trim()
+                    try {
+                        val flowiseResponse = json.decodeFromString<FlowiseResponse.FullResponseData>(data)
+                        emit(flowiseResponse)
+                    } catch (exception: SerializationException) {
+                        Napier.e("Error decoding response: $data", exception)
+                    }
+                }
             }
         }
     }

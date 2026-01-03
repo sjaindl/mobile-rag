@@ -11,7 +11,6 @@ coroutines = "1.10.2"
 desugarJdkLibs = "2.1.5"
 gradle = "8.13.2"
 junit = "4.13.2"
-kermit = "2.0.8"
 koin = "4.1.1"
 koinAnnotations = "2.3.1"
 koinCompose = "4.1.1"
@@ -30,6 +29,7 @@ turbine = "1.2.1"
 androidx-espresso-core = "3.7.0"
 vanniktech_maven_publish = "0.35.0"
 navigationCompose = "2.9.6"
+napierVersion = "2.7.1"
 
 [libraries]
 android_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -48,7 +48,6 @@ compose_ui_tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose_ui_toolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarJdkLibs" }
-kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
 koin_android = { group = "io.insert-koin", name = "koin-android" }
 koin_androidTest = { group = "io.insert-koin", name = "koin-android-test" }
 koin_annotations = { group = "io.insert-koin", name = "koin-annotations" }
@@ -80,6 +79,7 @@ test_androidJunit = { group = "androidx.test.ext", name = "junit", version.ref =
 test_junit = { group = "junit", name = "junit", version.ref = "junit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+logging-napier = { module = "io.github.aakira:napier", version.ref = "napierVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
