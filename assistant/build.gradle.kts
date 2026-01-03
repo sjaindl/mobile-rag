@@ -69,7 +69,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.serialization.protobuf)
-            implementation(libs.ktor.main)
+            implementation(libs.ktor.client.core)
             implementation(libs.ktor.logging)
             implementation(libs.ktor.kotlinxJson)
             implementation(libs.ktor.contentNegotiation)
@@ -80,6 +80,16 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.ktor.client.android)
+            implementation(libs.koin.android)
+            implementation(libs.koin.compose)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.ios)
         }
     }
 }

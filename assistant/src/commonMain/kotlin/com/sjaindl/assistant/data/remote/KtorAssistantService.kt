@@ -43,9 +43,9 @@ class KtorAssistantService : AssistantService, KoinComponent {
         val channel = response.bodyAsChannel()
         while (!channel.isClosedForRead) {
             val line = channel.readUTF8Line()
-            if (line?.startsWith("data:") == true) {
-                val data = line.removePrefix("data:").trim()
-                val flowiseResponse = json.decodeFromString<FlowiseResponse>(data)
+
+            if (line != null) {
+                val flowiseResponse = json.decodeFromString<FlowiseResponse.FullResponseData>(line)
                 emit(flowiseResponse)
             }
         }

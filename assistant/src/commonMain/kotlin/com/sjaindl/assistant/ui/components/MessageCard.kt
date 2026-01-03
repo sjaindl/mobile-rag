@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Chat
-import androidx.compose.material.icons.filled.VerifiedUser
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,7 +39,7 @@ fun MessageCard(
         ) {
             Image(
                 imageVector = if (message.isFromUser) {
-                    Icons.Default.VerifiedUser
+                    Icons.Default.Person
                 } else {
                     Icons.AutoMirrored.Filled.Chat
                 },

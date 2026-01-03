@@ -5,6 +5,7 @@ import com.sjaindl.assistant.data.remote.AssistantService
 import com.sjaindl.assistant.data.remote.KtorAssistantService
 import com.sjaindl.assistant.domain.AssistantRepository
 import com.sjaindl.assistant.domain.usecase.GetAssistantCompletionUseCase
+import com.sjaindl.assistant.ui.ChatViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
@@ -26,6 +27,10 @@ val assistantModule = module {
 
     single<GetAssistantCompletionUseCase> {
         GetAssistantCompletionUseCase(repository = get())
+    }
+
+    factory {
+        ChatViewModel(getAssistantCompletionUseCase = get(), config = get())
     }
 
     factory {

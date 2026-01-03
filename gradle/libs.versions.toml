@@ -14,6 +14,7 @@ junit = "4.13.2"
 kermit = "2.0.8"
 koin = "4.1.1"
 koinAnnotations = "2.3.1"
+koinCompose = "4.1.1"
 kotlin = "2.3.0"
 kotlinXSerialization = "1.9.0"
 kotlin_datetime = "0.7.1"
@@ -56,6 +57,7 @@ koin_bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
 koin_compose_androidx = { group = "io.insert-koin", name = "koin-androidx-compose" }
 koin_compose_viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
 koin_core = { group = "io.insert-koin", name = "koin-core" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose"}
 koin_ksp = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koinAnnotations" }
 koin_test = { group = "io.insert-koin", name = "koin-test" }
 koin_testJunit4 = { group = "io.insert-koin", name = "koin-test-junit4" }
@@ -66,9 +68,11 @@ kotlinx_serialization_json = { module =  "org.jetbrains.kotlinx:kotlinx-serializ
 kotlinx_serialization_protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinXSerialization" }
 ktor_contentNegotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor_darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
 ktor_kotlinxJson = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor_logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
-ktor_main = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor_okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 okhttp_core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp_loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
