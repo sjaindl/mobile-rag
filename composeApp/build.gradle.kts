@@ -50,6 +50,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.compose.multiplatform.navigation)
+            implementation(compose.materialIconsExtended)
 
             implementation(project(":assistant"))
         }
