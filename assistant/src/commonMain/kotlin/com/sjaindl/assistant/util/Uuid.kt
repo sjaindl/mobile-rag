@@ -1,3 +1,3 @@
 package com.sjaindl.assistant.util
 
-expect fun generateUUID(): String
+expect fun generateUuid(): String

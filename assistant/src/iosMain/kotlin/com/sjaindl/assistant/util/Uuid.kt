@@ -2,4 +2,4 @@ package com.sjaindl.assistant.util
 
 import platform.Foundation.NSUUID
 
-actual fun generateUUID(): String = NSUUID().UUIDString()
+actual fun generateUuid(): String = NSUUID().UUIDString()

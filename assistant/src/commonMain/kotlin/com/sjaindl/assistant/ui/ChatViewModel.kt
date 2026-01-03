@@ -7,7 +7,7 @@ import com.sjaindl.assistant.data.remote.model.FlowiseResponse
 import com.sjaindl.assistant.domain.usecase.GetAssistantCompletionUseCase
 import com.sjaindl.assistant.ui.model.ChatMessage
 import com.sjaindl.assistant.ui.model.ChatUiState
-import com.sjaindl.assistant.util.generateUUID
+import com.sjaindl.assistant.util.generateUuid
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,7 +26,7 @@ class ChatViewModel(
     private val _uiState = MutableStateFlow(ChatUiState())
     val uiState = _uiState.asStateFlow()
 
-    private var chatId: String = generateUUID()
+    private var chatId: String = generateUuid()
 
     fun sendPrompt(prompt: String) {
         viewModelScope.launch {
