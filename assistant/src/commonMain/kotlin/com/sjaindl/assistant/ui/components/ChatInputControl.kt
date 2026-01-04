@@ -21,15 +21,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.sjaindl.assistant.assistant.generated.resources.Res
+import com.sjaindl.assistant.assistant.generated.resources.character_limit_exceeded
 import com.sjaindl.assistant.assistant.generated.resources.prompt_label
 import com.sjaindl.assistant.ui.model.ChatUiState
 import com.sjaindl.assistant.ui.theme.spacing
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ChatInputControl(
     uiState: ChatUiState,
+    messageCharLimit: Int?,
+    promptPlaceholder: StringResource,
     onSendPrompt: (String) -> Unit,
 ) {
     var prompt by remember {
@@ -37,6 +41,8 @@ fun ChatInputControl(
     }
 
     val keyboardController = LocalSoftwareKeyboardController.current
+
+    val isError = messageCharLimit != null && prompt.length > messageCharLimit
 
     Row(
         modifier = Modifier
@@ -52,9 +58,15 @@ fun ChatInputControl(
             },
             modifier = Modifier
                 .weight(weight = 1f),
+            isError = isError,
             placeholder = {
-                Text(stringResource(Res.string.prompt_label))
+                Text(stringResource(promptPlaceholder))
             },
+            supportingText = {
+                if (isError) {
+                    Text(stringResource(Res.string.character_limit_exceeded, messageCharLimit))
+                }
+            }
         )
         Button(
             onClick = {
@@ -80,7 +92,9 @@ fun ChatInputControlPreview() {
             uiState = ChatUiState(
                 isLoading = false,
             ),
-            onSendPrompt = {}
+            messageCharLimit = 250,
+            promptPlaceholder = Res.string.prompt_label,
+            onSendPrompt = { },
         )
     }
 }

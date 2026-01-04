@@ -48,6 +48,10 @@ fun NavGraphBuilder.assistantGraph(
                 welcomeMessage = config.welcomeMessage?.let { resource ->
                     stringResource(resource = resource)
                 },
+                assistantIcon = config.assistantIcon,
+                userIcon = config.userIcon,
+                messageCharLimit = config.messageCharLimit,
+                promptPlaceholder = config.promptPlaceholder,
                 onSendPrompt = chatViewModel::sendPrompt,
             )
         }

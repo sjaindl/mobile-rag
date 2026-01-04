@@ -1,6 +1,5 @@
 package com.sjaindl.assistant.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.sjaindl.assistant.assistant.generated.resources.Res
 import com.sjaindl.assistant.assistant.generated.resources.source_documents
 import com.sjaindl.assistant.assistant.generated.resources.used_tools
+import com.sjaindl.assistant.config.ChatIcon
 import com.sjaindl.assistant.data.remote.model.SourceDocument
 import com.sjaindl.assistant.data.remote.model.Tool
 import com.sjaindl.assistant.ui.model.ChatMessage
@@ -40,6 +40,8 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun MessageCard(
     message: ChatMessage,
+    assistantIcon: ChatIcon,
+    userIcon: ChatIcon,
 ) {
     var showToolsDialogFor by remember {
         mutableStateOf<List<Tool>?>(null)
@@ -59,18 +61,22 @@ fun MessageCard(
                 .padding(all = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Image(
-                imageVector = if (message.isFromUser) {
-                    Icons.Default.Person
-                } else {
-                    Icons.AutoMirrored.Filled.Chat
-                },
-                contentDescription = null,
-                modifier = Modifier
-                    .size(size = 40.dp)
-                    .clip(CircleShape)
-                    .align(Alignment.Top),
-            )
+            val iconModifier = Modifier
+                .size(size = 40.dp)
+                .clip(CircleShape)
+                .align(Alignment.Top)
+
+            if (message.isFromUser) {
+                MessageIcon(
+                    chatIcon = userIcon,
+                    modifier = iconModifier,
+                )
+            } else {
+                MessageIcon(
+                    chatIcon = assistantIcon,
+                    modifier = iconModifier,
+                )
+            }
 
             Spacer(
                 modifier = Modifier
@@ -150,7 +156,9 @@ fun MessageCardPreview() {
             message = ChatMessage(
                 text = "This is a preview with a very long text to see how it looks like",
                 isFromUser = false
-            )
+            ),
+            assistantIcon = ChatIcon.Vector(imageVector = Icons.AutoMirrored.Filled.Chat),
+            userIcon = ChatIcon.Vector(imageVector = Icons.Default.Person),
         )
     }
 }
