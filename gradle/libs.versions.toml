@@ -47,6 +47,7 @@ compose_multiplatform_windowSize = { group = "org.jetbrains.compose.material3", 
 compose_ui_tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose_ui_toolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "coroutines" }
 desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 koin_android = { group = "io.insert-koin", name = "koin-android" }
 koin_androidTest = { group = "io.insert-koin", name = "koin-android-test" }
@@ -80,6 +81,7 @@ test_junit = { group = "junit", name = "junit", version.ref = "junit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 logging-napier = { module = "io.github.aakira:napier", version.ref = "napierVersion" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }

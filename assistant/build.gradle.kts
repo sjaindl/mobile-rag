@@ -91,6 +91,12 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.ios)
         }
+
+        jvmMain.dependencies {
+            implementation(libs.sqldelight.sqlite.driver)
+            implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.ktor.okhttp)
+        }
     }
 }
 

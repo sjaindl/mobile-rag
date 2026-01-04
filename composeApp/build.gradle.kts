@@ -32,6 +32,11 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.compose.activity)
         }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+
         commonMain.dependencies {
             val koinBom = project.dependencies.platform(libs.koin.bom)
             val koinAnnotationsBom =
