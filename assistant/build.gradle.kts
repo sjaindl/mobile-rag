@@ -8,6 +8,15 @@ plugins {
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.vanniktech.maven.publish)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sqldelight)
+}
+
+sqldelight {
+    databases {
+        create("ChatDatabase") {
+            packageName.set("com.sjaindl.assistant.database")
+        }
+    }
 }
 
 group = "com.sjaindl.assistant"
@@ -76,6 +85,8 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.ktor)
             implementation(libs.logging.napier)
+            implementation(libs.sqldelight.runtime)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
 
         commonTest.dependencies {
@@ -86,10 +97,12 @@ kotlin {
             implementation(libs.ktor.client.android)
             implementation(libs.koin.android)
             implementation(libs.koin.compose)
+            implementation(libs.sqldelight.android.driver)
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.ios)
+            implementation(libs.sqldelight.native.driver)
         }
 
         jvmMain.dependencies {

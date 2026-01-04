@@ -50,23 +50,26 @@ fun ChatScreen(
             modifier = Modifier
                 .weight(1f),
         ) {
-            if (uiState.messages.isEmpty() && !uiState.isLoading) {
-                welcomeMessage?.let {
-                    item {
-                        MessageCard(
-                            message = ChatMessage(
-                                text = welcomeMessage,
-                                isFromUser = false,
-                            )
+            welcomeMessage?.let {
+                item {
+                    MessageCard(
+                        message = ChatMessage(
+                            text = welcomeMessage,
+                            isFromUser = false,
                         )
-
-                        SampleQuestions(
-                            sampleQuestions = sampleQuestions,
-                            onSendPrompt = onSendPrompt,
-                        )
-                    }
+                    )
                 }
             }
+
+            if (uiState.messages.isEmpty()) {
+                item {
+                    SampleQuestions(
+                        sampleQuestions = sampleQuestions,
+                        onSendPrompt = onSendPrompt,
+                    )
+                }
+            }
+
             items(items = uiState.messages) { message ->
                 MessageCard(message = message)
             }
