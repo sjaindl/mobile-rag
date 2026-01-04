@@ -30,9 +30,11 @@ fun NavGraphBuilder.assistantGraph(
             topBar = {
                 AssistantAppBar(
                     title = config.appBarTitle,
+                    showResetOption = config.resetOption,
                     navigateUp = {
                         rootNavController.popBackStack()
                     },
+                    onResetChat = chatViewModel::resetChat,
                 )
             }
         ) {

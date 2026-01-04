@@ -2,6 +2,7 @@ package com.sjaindl.assistant.ui
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -15,6 +16,7 @@ import androidx.compose.ui.Modifier
 import com.sjaindl.assistant.assistant.generated.resources.Res
 import com.sjaindl.assistant.assistant.generated.resources.assistant_title
 import com.sjaindl.assistant.assistant.generated.resources.back
+import com.sjaindl.assistant.assistant.generated.resources.reset
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -23,8 +25,10 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun AssistantAppBar(
     title: StringResource,
+    showResetOption: Boolean,
     modifier: Modifier = Modifier,
     navigateUp: () -> Unit = { },
+    onResetChat: () -> Unit = { },
 ) {
     TopAppBar(
         title = {
@@ -47,6 +51,19 @@ fun AssistantAppBar(
                 )
             }
         },
+        actions = {
+            if (showResetOption) {
+                IconButton(
+                    onClick = onResetChat,
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Refresh,
+                        contentDescription = stringResource(Res.string.reset),
+                        tint = colorScheme.onPrimary,
+                    )
+                }
+            }
+        },
         colors = topAppBarColors(
             containerColor = colorScheme.primary,
         ),
@@ -59,6 +76,7 @@ fun AssistantAppBarPreview() {
     MaterialTheme {
         AssistantAppBar(
             title = Res.string.assistant_title,
+            showResetOption = true,
             navigateUp = { },
         )
     }

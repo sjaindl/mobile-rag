@@ -91,6 +91,7 @@ val assistantModule = module {
             getChatHistoryUseCase = get(),
             insertChatMessageUseCase = get(),
             updateChatMessageUseCase = get(),
+            clearChatHistoryUseCase = get(),
             config = get(),
         )
     }

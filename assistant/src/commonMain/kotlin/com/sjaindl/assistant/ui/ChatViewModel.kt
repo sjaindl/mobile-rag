@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.data.remote.model.FlowiseResponse
+import com.sjaindl.assistant.domain.usecase.ClearChatHistoryUseCase
 import com.sjaindl.assistant.domain.usecase.GetAssistantCompletionUseCase
 import com.sjaindl.assistant.domain.usecase.GetChatHistoryUseCase
 import com.sjaindl.assistant.domain.usecase.InsertChatMessageUseCase
@@ -28,6 +29,7 @@ class ChatViewModel(
     private val getChatHistoryUseCase: GetChatHistoryUseCase,
     private val insertChatMessageUseCase: InsertChatMessageUseCase,
     private val updateChatMessageUseCase: UpdateChatMessageUseCase,
+    private val clearChatHistoryUseCase: ClearChatHistoryUseCase,
     private val config: AssistantConfig,
 ) : ViewModel() {
 
@@ -173,6 +175,18 @@ class ChatViewModel(
                     _uiState.value = _uiState.value.copy(isLoading = false)
                 }
                 .collect()
+        }
+    }
+
+    fun resetChat() {
+        viewModelScope.launch {
+            if (config.persistMessages) {
+                clearChatHistoryUseCase()
+            }
+
+            _uiState.update {
+                it.copy(messages = emptyList())
+            }
         }
     }
 }

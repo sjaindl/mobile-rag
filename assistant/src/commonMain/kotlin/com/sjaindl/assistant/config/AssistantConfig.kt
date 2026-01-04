@@ -12,6 +12,7 @@ data class AssistantConfig(
     val welcomeMessage: StringResource? = null,
     val sampleQuestions: List<StringResource> = emptyList(),
     val persistMessages: Boolean = true,
+    val resetOption: Boolean = true,
 )
 
 sealed class Provider {
