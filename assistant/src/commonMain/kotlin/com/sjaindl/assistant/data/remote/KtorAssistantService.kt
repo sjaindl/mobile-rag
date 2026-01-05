@@ -7,6 +7,7 @@ import com.sjaindl.assistant.data.remote.model.FlowiseResponse
 import com.sjaindl.assistant.data.remote.model.OverrideConfig
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
+import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsChannel
@@ -29,12 +30,13 @@ class KtorAssistantService : AssistantService, KoinComponent {
     private val config: AssistantConfig by inject()
 
     override fun getCompletion(prompt: String, chatId: String?, streaming: Boolean): Flow<FlowiseResponse> = flow {
-        val baseUrl = when (val provider = config.provider) {
-            is Provider.Flowise -> provider.baseUrl
-        }
+        val provider = config.provider as? Provider.Flowise ?: return@flow
 
-        val response = client.post(baseUrl) {
+        val response = client.post(provider.baseUrl) {
             contentType(ContentType.Application.Json)
+            provider.apiKey?.let {
+                header("Authorization", "Bearer $it")
+            }
             setBody(
                 FlowiseRequest(
                     question = prompt,

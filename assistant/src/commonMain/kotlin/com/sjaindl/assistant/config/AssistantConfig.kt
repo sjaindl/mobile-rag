@@ -27,7 +27,10 @@ data class AssistantConfig(
 )
 
 sealed class Provider {
-    data class Flowise(val baseUrl: String) : Provider()
+    data class Flowise(
+        val baseUrl: String,
+        val apiKey: String? = null,
+    ) : Provider()
 }
 
 sealed class ChatIcon {

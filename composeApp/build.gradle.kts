@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -6,6 +7,19 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.buildkonfig)
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+buildConfig {
+    packageName = "com.sjaindl.app"
+    val flowiseApiKey = localProperties.getProperty("FLOWISE_API_KEY", "")
+    buildConfigField("String", "FLOWISE_API_KEY", flowiseApiKey)
 }
 
 kotlin {

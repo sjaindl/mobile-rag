@@ -1,5 +1,6 @@
 package com.sjaindl.app.di
 
+import com.sjaindl.app.BuildConfig
 import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.di.assistantModule
@@ -17,6 +18,7 @@ val appModule = module {
         AssistantConfig(
             provider = Provider.Flowise(
                 baseUrl = "http://localhost:3000/flowise/api/v1/prediction/[chatflow-id]",
+                apiKey = BuildConfig.FLOWISE_API_KEY,
             ),
             appBarTitle = Res.string.appName,
             sampleQuestions = listOf(Res.string.sample_question_1, Res.string.sample_question_2),
