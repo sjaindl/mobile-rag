@@ -1,87 +1,53 @@
 [versions]
-androidJunit = "1.3.0"
 androidx_lifecycle = "2.9.6"
-appcompat = "1.7.1"
 coil = "3.3.0"
-commonsIo = "2.21.0"
-compose = "2025.12.01"
 compose_activity = "1.12.2"
 compose_multiplatform = "1.9.3"
 coroutines = "1.10.2"
-desugarJdkLibs = "2.1.5"
 gradle = "8.13.2"
-junit = "4.13.2"
 koin = "4.1.1"
 koinAnnotations = "2.3.1"
 koinCompose = "4.1.1"
 kotlin = "2.3.0"
 kotlinXSerialization = "1.9.0"
 kotlin_datetime = "0.7.1"
-kover = "0.9.4"
-ksp = "2.3.0"
 ktor = "3.3.3"
-mokkery = "3.1.1"
 multiplatformAdaptive = "1.2.0"
 multiplatformNavigation = "2.9.1"
 multiplatformWindowSizeClass = "1.9.0"
-okhttp = "5.3.2"
-turbine = "1.2.1"
-androidx-espresso-core = "3.7.0"
 vanniktech_maven_publish = "0.35.0"
-navigationCompose = "2.9.6"
 napierVersion = "2.7.1"
 sqldelight = "2.2.1"
 buildkonfig = "6.0.7"
 
 [libraries]
-android_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
 androidx_lifecycle_runtime_compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx_lifecycle" }
 androidx_lifecycle_viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx_lifecycle" }
 coil_compose = {group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil_ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor2", version.ref = "coil" }
-commonsIo = { group = "commons-io", name = "commons-io", version.ref = "commonsIo"}
 compose_activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose_activity" }
-compose_bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose" }
 compose_multiplatform_adaptive = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive", version.ref = "multiplatformAdaptive" }
 compose_multiplatform_navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "multiplatformNavigation" }
 compose_multiplatform_windowSize = { group = "org.jetbrains.compose.material3", name = "material3-window-size-class", version.ref = "multiplatformWindowSizeClass" }
-compose_ui_tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-compose_ui_toolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "coroutines" }
-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugarJdkLibs" }
 koin_android = { group = "io.insert-koin", name = "koin-android" }
-koin_androidTest = { group = "io.insert-koin", name = "koin-android-test" }
 koin_annotations = { group = "io.insert-koin", name = "koin-annotations" }
 koin_annotations_bom = { group = "io.insert-koin", name = "koin-annotations-bom", version.ref = "koinAnnotations" }
 koin_bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin" }
-koin_compose_androidx = { group = "io.insert-koin", name = "koin-androidx-compose" }
 koin_compose_viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
 koin_core = { group = "io.insert-koin", name = "koin-core" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
-koin_ksp = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koinAnnotations" }
-koin_test = { group = "io.insert-koin", name = "koin-test" }
-koin_testJunit4 = { group = "io.insert-koin", name = "koin-test-junit4" }
-koin_viewmodel_navigation = { group = "io.insert-koin", name = "koin-androidx-navigation" }
 kotlin_test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx_datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin_datetime" }
 kotlinx_serialization_json = { module =  "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinXSerialization"}
 kotlinx_serialization_protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinXSerialization" }
 ktor_contentNegotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
-ktor_darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
 ktor_kotlinxJson = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor_logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor_okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
-okhttp_core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-okhttp_loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
-test_androidJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJunit" }
-test_junit = { group = "junit", name = "junit", version.ref = "junit" }
-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 logging-napier = { module = "io.github.aakira:napier", version.ref = "napierVersion" }
 sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
@@ -96,10 +62,6 @@ kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 compose_multiplatform = { id = "org.jetbrains.compose", version.ref = "compose_multiplatform" }
 compose_compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
 vanniktech_maven_publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech_maven_publish" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 buildkonfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildkonfig" }
