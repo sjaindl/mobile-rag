@@ -17,6 +17,8 @@ sqldelight {
             packageName.set("com.sjaindl.assistant.database")
         }
     }
+
+    linkSqlite = true
 }
 
 group = "com.sjaindl.assistant"
@@ -48,8 +50,17 @@ kotlin {
             }
         }
     }
-    iosArm64()
-    iosSimulatorArm64()
+
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "assistant"
+            isStatic = true
+            linkerOpts.add("-lsqlite3")
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {
