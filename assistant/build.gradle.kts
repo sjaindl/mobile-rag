@@ -1,14 +1,23 @@
 import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.android.kotlin.multiplatform.library)
-    alias(libs.plugins.vanniktech.maven.publish)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.vanniktech.maven.publish)
+    id("signing")
+    alias(libs.plugins.dokka)
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
 }
 
 sqldelight {
@@ -21,7 +30,7 @@ sqldelight {
     linkSqlite = true
 }
 
-group = "com.sjaindl.assistant"
+group = "io.github.sjaindl"
 version = "1.0.0"
 
 kotlin {
@@ -32,7 +41,7 @@ kotlin {
         compileSdk = 36
         minSdk = 24
 
-        withJava() // enable java compilation support
+        withJava()
         withHostTestBuilder {}.configure {}
         withDeviceTestBuilder {
             sourceSetTreeName = "test"
@@ -52,6 +61,7 @@ kotlin {
     }
 
     listOf(
+        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -66,7 +76,7 @@ kotlin {
         commonMain.dependencies {
             val koinBom = project.dependencies.platform(libs.koin.bom)
             val koinAnnotationsBom =
-                project.dependencies.platform(libs.koin.annotations.bom)
+            project.dependencies.platform(libs.koin.annotations.bom)
             implementation(koinBom)
             implementation(koinAnnotationsBom)
             implementation(libs.koin.core)
@@ -124,36 +134,65 @@ kotlin {
     }
 }
 
-mavenPublishing {
-    publishToMavenCentral()
+signing {
+    val signingKeyId = localProperties.getProperty("signing.keyId")
+    val signingKeyFile = localProperties.getProperty("signing.secretSigningKeyFile")
+    val signingKey = signingKeyFile?.let {
+        rootProject.file(it).readText()
+    }
+    val signingPassword = localProperties.getProperty("signing.password")
 
+    if (signingKeyId != null && signingKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(
+            signingKeyId,
+            signingKey,
+            signingPassword
+        )
+    }
+}
+
+mavenPublishing {
+    publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates(group.toString(), "assistant", version.toString())
+    coordinates(group.toString(), "mobile-rag-assistant", version.toString())
 
     pom {
-        name = "My library"
-        description = "A library."
-        inceptionYear = "2024"
-        url = "https://github.com/kotlin/multiplatform-library-template/"
+        name = "Mobile Rag Assistant"
+        description = "Mobile RAG assistant with a ready to use Chatbot UI written in Jetpack Compose. " +
+                "Currently Flowise is supported as a platform. " +
+                "It has Kotlin Multiplatform support for Android, iOS and Desktop."
+        inceptionYear = "2025"
+        url = "https://github.com/sjaindl/mobile-rag"
+
         licenses {
             license {
-                name = "XXX"
-                url = "YYY"
-                distribution = "ZZZ"
+                name = "MIT Licence"
+                url = "https://opensource.org/license/mit"
+                distribution = "https://opensource.org/license/mit"
             }
         }
+
         developers {
             developer {
-                id = "XXX"
-                name = "YYY"
-                url = "ZZZ"
+                id = "sjaindl"
+                name = "Stefan Jaindl"
+                url = "https://github.com/sjaindl"
             }
         }
+
         scm {
-            url = "XXX"
-            connection = "YYY"
-            developerConnection = "ZZZ"
+            url = "https://github.com/sjaindl/mobile-rag"
+            connection = "scm:git:git://github.com/sjaindl/mobile-rag.git"
+            developerConnection = "scm:git:ssh://git@github.com/sjaindl/mobile-rag.git"
         }
     }
+}
+
+tasks.dokkaHtml {
+    outputDirectory.set(layout.buildDirectory.dir("documentation/html"))
+}
+
+dokka {
+    moduleName.set("Mobile RAG Assistant Library")
 }

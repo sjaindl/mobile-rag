@@ -19,6 +19,7 @@ vanniktech_maven_publish = "0.35.0"
 napierVersion = "2.7.1"
 sqldelight = "2.2.1"
 buildkonfig = "6.0.7"
+dokka = "2.1.0"
 
 [libraries]
 androidx_lifecycle_runtime_compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx_lifecycle" }
@@ -65,3 +66,4 @@ kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 vanniktech_maven_publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech_maven_publish" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 buildkonfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildkonfig" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

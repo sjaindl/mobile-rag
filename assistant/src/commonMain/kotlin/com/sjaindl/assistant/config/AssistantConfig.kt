@@ -4,8 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.sjaindl.assistant.assistant.generated.resources.Res
-import com.sjaindl.assistant.assistant.generated.resources.prompt_label
+import io.github.sjaindl.assistant.generated.resources.Res
+import io.github.sjaindl.assistant.generated.resources.prompt_label
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

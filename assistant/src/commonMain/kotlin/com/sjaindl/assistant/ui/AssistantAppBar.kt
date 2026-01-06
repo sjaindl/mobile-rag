@@ -13,10 +13,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.sjaindl.assistant.assistant.generated.resources.Res
-import com.sjaindl.assistant.assistant.generated.resources.assistant_title
-import com.sjaindl.assistant.assistant.generated.resources.back
-import com.sjaindl.assistant.assistant.generated.resources.reset
+import io.github.sjaindl.assistant.generated.resources.Res
+import io.github.sjaindl.assistant.generated.resources.assistant_title
+import io.github.sjaindl.assistant.generated.resources.back
+import io.github.sjaindl.assistant.generated.resources.reset
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview

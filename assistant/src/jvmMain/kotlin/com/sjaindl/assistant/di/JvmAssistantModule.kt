@@ -1,5 +1,3 @@
-@file:JvmName("JvmAssistantModule")
-
 package com.sjaindl.assistant.di
 
 import com.sjaindl.assistant.database.DriverFactory

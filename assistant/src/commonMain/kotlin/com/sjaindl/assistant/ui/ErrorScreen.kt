@@ -20,11 +20,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
-import com.sjaindl.assistant.assistant.generated.resources.Res
-import com.sjaindl.assistant.assistant.generated.resources.errorDescription
-import com.sjaindl.assistant.assistant.generated.resources.errorTitle
-import com.sjaindl.assistant.assistant.generated.resources.retry
 import com.sjaindl.assistant.ui.theme.spacing
+import io.github.sjaindl.assistant.generated.resources.Res
+import io.github.sjaindl.assistant.generated.resources.errorDescription
+import io.github.sjaindl.assistant.generated.resources.errorTitle
+import io.github.sjaindl.assistant.generated.resources.retry
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
