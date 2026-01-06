@@ -30,6 +30,8 @@ fun NavGraphBuilder.assistantGraph(
             topBar = {
                 AssistantAppBar(
                     title = config.appBarTitle,
+                    icon = config.appBarIcon,
+                    iconTint = config.appBarIconTint,
                     showResetOption = config.resetOption,
                     navigateUp = {
                         rootNavController.popBackStack()

@@ -12,6 +12,8 @@ import org.jetbrains.compose.resources.StringResource
 data class AssistantConfig(
     val provider: Provider,
     val appBarTitle: StringResource,
+    val appBarIcon: ChatIcon? = null,
+    val appBarIconTint: Boolean = false,
     val streaming: Boolean = true,
     val streamingDelayMilliseconds: Long = 4L,
     val showTools: Boolean = true,
