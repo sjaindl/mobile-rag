@@ -7,7 +7,7 @@ import kotlin.test.assertNotNull
 class AndroidUuidTest {
 
     @Test
-    fun `test generateUuid not null`() {
+    fun testGenerateUuidNotNull() {
         assertNotNull(generateUuid())
     }
 }

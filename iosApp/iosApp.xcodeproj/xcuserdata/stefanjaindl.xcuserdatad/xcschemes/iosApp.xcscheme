@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51DC39506E684BD668384CA3"
-               BuildableName = "InvestCopilot.app"
+               BuildableName = "Invest Copilot.app"
                BlueprintName = "iosApp"
                ReferencedContainer = "container:iosApp.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51DC39506E684BD668384CA3"
-            BuildableName = "InvestCopilot.app"
+            BuildableName = "Invest Copilot.app"
             BlueprintName = "iosApp"
             ReferencedContainer = "container:iosApp.xcodeproj">
          </BuildableReference>
