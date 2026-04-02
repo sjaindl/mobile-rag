@@ -2,7 +2,7 @@
 <resources>
     <string name="appName" translatable="false">Invest Copilot</string>
 
-    <string name="sample_question_1">What are the top-performing stocks this month?</string>
-    <string name="sample_question_2">Show me a chart of NVDA for the last 6 months</string>
+    <string name="sample_question_1">What is the Bitcoin price today?</string>
+    <string name="sample_question_2">How much revenue did Google make in Q4 2025?</string>
     <string name="welcome_message">Welcome to Invest Copilot! How can I help you today?</string>
 </resources>
