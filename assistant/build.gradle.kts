@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.androidLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.util.Properties
 
@@ -36,7 +35,7 @@ version = "1.0.3"
 kotlin {
     jvm()
 
-    androidLibrary {
+    android {
         namespace = "com.sjaindl.assistant"
         compileSdk = 36
         minSdk = 24
@@ -83,13 +82,7 @@ kotlin {
             implementation(libs.koin.annotations)
             implementation(libs.koin.compose.viewmodel)
 
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.materialIconsExtended)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.bundles.compose)
 
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
@@ -151,6 +144,14 @@ signing {
     }
 }
 
+dokka {
+    moduleName.set("Mobile RAG Assistant Library")
+
+    dokkaPublications.html {
+        outputDirectory.set(layout.buildDirectory.dir("documentation/html"))
+    }
+}
+
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
@@ -187,12 +188,4 @@ mavenPublishing {
             developerConnection = "scm:git:ssh://git@github.com/sjaindl/mobile-rag.git"
         }
     }
-}
-
-tasks.dokkaHtml {
-    outputDirectory.set(layout.buildDirectory.dir("documentation/html"))
-}
-
-dokka {
-    moduleName.set("Mobile RAG Assistant Library")
 }

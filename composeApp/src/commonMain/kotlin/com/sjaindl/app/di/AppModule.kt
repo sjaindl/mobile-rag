@@ -4,8 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Title
 import com.sjaindl.app.BuildConfig
 import com.sjaindl.assistant.config.AssistantConfig
-import com.sjaindl.assistant.config.DOMAIN
 import com.sjaindl.assistant.config.ChatIcon
+import com.sjaindl.assistant.config.DOMAIN
 import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.di.assistantModule
 import mobile_rag.composeapp.generated.resources.Res

@@ -20,13 +20,13 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import com.sjaindl.assistant.ui.theme.spacing
 import io.github.sjaindl.assistant.generated.resources.Res
 import io.github.sjaindl.assistant.generated.resources.errorDescription
 import io.github.sjaindl.assistant.generated.resources.errorTitle
 import io.github.sjaindl.assistant.generated.resources.retry
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ErrorScreen(
@@ -63,7 +63,7 @@ fun ErrorScreen(
             style = typography.bodyMedium,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = spacing.md).clickable {
-                clipboardManager.setText(AnnotatedString((text)))
+                clipboardManager.setText(AnnotatedString(text))
             }
         )
         onButtonClick?.let {

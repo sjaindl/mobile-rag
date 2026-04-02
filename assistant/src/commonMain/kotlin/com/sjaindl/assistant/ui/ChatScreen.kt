@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.sjaindl.assistant.config.ChatIcon
 import com.sjaindl.assistant.data.remote.model.SourceDocument
 import com.sjaindl.assistant.data.remote.model.Tool
@@ -25,7 +26,6 @@ import io.github.sjaindl.assistant.generated.resources.Res
 import io.github.sjaindl.assistant.generated.resources.prompt_label
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ChatScreen(

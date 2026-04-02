@@ -1,25 +1,27 @@
 [versions]
-androidx_lifecycle = "2.9.6"
-coil = "3.3.0"
-compose_activity = "1.12.2"
-compose_multiplatform = "1.9.3"
+androidx_lifecycle = "2.10.0"
+coil = "3.4.0"
+compose_activity = "1.13.0"
+compose_multiplatform = "1.10.3"
+compose_material3 = "1.9.0"
+compose_material_icons_extended = "1.7.3"
 coroutines = "1.10.2"
-gradle = "8.13.2"
-koin = "4.1.1"
+gradle = "9.1.0"
+koin = "4.2.0"
 koinAnnotations = "2.3.1"
-koinCompose = "4.1.1"
-kotlin = "2.3.0"
-kotlinXSerialization = "1.9.0"
+koinCompose = "4.2.0"
+kotlin = "2.3.20"
+kotlinXSerialization = "1.10.0"
 kotlin_datetime = "0.7.1"
-ktor = "3.3.3"
+ktor = "3.4.2"
 multiplatformAdaptive = "1.2.0"
-multiplatformNavigation = "2.9.1"
+multiplatformNavigation = "2.9.2"
 multiplatformWindowSizeClass = "1.9.0"
-vanniktech_maven_publish = "0.35.0"
+vanniktech_maven_publish = "0.36.0"
 napierVersion = "2.7.1"
-sqldelight = "2.2.1"
-buildkonfig = "6.0.7"
-dokka = "2.1.0"
+sqldelight = "2.3.2"
+buildkonfig = "6.0.9"
+dokka = "2.2.0"
 
 [libraries]
 androidx_lifecycle_runtime_compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx_lifecycle" }
@@ -27,6 +29,15 @@ androidx_lifecycle_viewmodel = { group = "org.jetbrains.androidx.lifecycle", nam
 coil_compose = {group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil_ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor2", version.ref = "coil" }
 compose_activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose_activity" }
+compose_runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "compose_multiplatform" }
+compose_foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "compose_multiplatform" }
+compose_material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose_material3" }
+compose_ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose_multiplatform" }
+compose_ui_tooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version.ref = "compose_multiplatform" }
+compose_ui_tooling_preview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose_multiplatform" }
+compose_components_resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose_multiplatform" }
+compose_material_icons_extended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version.ref = "compose_material_icons_extended" }
+compose_desktop_currentOs = { group = "org.jetbrains.compose.desktop", name = "desktop-jvm", version.ref = "compose_multiplatform" }
 compose_multiplatform_adaptive = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive", version.ref = "multiplatformAdaptive" }
 compose_multiplatform_navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "multiplatformNavigation" }
 compose_multiplatform_windowSize = { group = "org.jetbrains.compose.material3", name = "material3-window-size-class", version.ref = "multiplatformWindowSizeClass" }
@@ -55,6 +66,9 @@ sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", ver
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+
+[bundles]
+compose = ["compose_runtime", "compose_foundation", "compose_material3", "compose_ui", "compose_components_resources", "compose_ui_tooling_preview", "compose_material_icons_extended"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }

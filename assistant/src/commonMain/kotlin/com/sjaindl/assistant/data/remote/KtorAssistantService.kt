@@ -13,7 +13,7 @@ import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-import io.ktor.utils.io.readUTF8Line
+import io.ktor.utils.io.readLine
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.SerializationException
@@ -49,7 +49,7 @@ class KtorAssistantService : AssistantService, KoinComponent {
 
         val channel = response.bodyAsChannel()
         while (!channel.isClosedForRead) {
-            val line = channel.readUTF8Line()
+            val line = channel.readLine()
 
             if (streaming) {
                 if (line?.startsWith("data:") == true) {
