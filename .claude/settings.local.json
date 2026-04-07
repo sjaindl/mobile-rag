@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(./gradlew wrapper:*)",
+      "WebFetch(domain:services.gradle.org)",
+      "Bash(./gradlew assemble:*)",
+      "Bash(./gradlew compileKotlinJvm compileDebugKotlinAndroid --no-configuration-cache)",
+      "Bash(./gradlew :assistant:compileTestKotlinJvm --no-configuration-cache)",
+      "Bash(./gradlew :androidApp:assembleDebug :composeApp:compileKotlinJvm --no-configuration-cache)",
+      "Bash(./gradlew :androidApp:assembleDebug --no-configuration-cache)",
+      "Bash(./gradlew :composeApp:compileKotlinJvm :assistant:compileTestKotlinJvm --no-configuration-cache)",
+      "Bash(find /Users/stefanjaindl/Code/mobile-rag/composeApp/build -name *.aar)",
+      "Bash(find /Users/stefanjaindl/Code/mobile-rag/composeApp/build -path */assets/composeResources*)",
+      "Bash(find /Users/stefanjaindl/Code/mobile-rag/androidApp/build -path */assets/composeResources*)",
+      "Bash(find /Users/stefanjaindl/Code/mobile-rag/composeApp/build -name *.aar -o -name android-library*)",
+      "Bash(./gradlew clean:*)",
+      "Bash(while read:*)",
+      "Bash(do sed:*)",
+      "Bash(done)",
+      "Bash(./gradlew :androidApp:assembleDebug :composeApp:compileKotlinJvm :assistant:compileKotlinJvm --no-configuration-cache)",
+      "Bash(./gradlew :assistant:dependencies --configuration jvmRuntimeClasspath --no-configuration-cache)",
+      "Bash(./gradlew :androidApp:dependencies --configuration debugRuntimeClasspath --no-configuration-cache)",
+      "Bash(./gradlew :composeApp:dependencies --configuration jvmRuntimeClasspath --no-configuration-cache)",
+      "Bash(./gradlew :androidApp:assembleDebug --no-configuration-cache --info)",
+      "WebFetch(domain:repo1.maven.org)",
+      "Bash(./gradlew :assistant:compileKotlinJvm --no-configuration-cache)",
+      "Bash(jar tf:*)"
+    ]
+  }
+}
