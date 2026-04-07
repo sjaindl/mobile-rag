@@ -5,7 +5,6 @@ import androidx.compose.material.icons.filled.Title
 import com.sjaindl.app.BuildConfig
 import com.sjaindl.assistant.config.AssistantConfig
 import com.sjaindl.assistant.config.ChatIcon
-import com.sjaindl.assistant.config.DOMAIN
 import com.sjaindl.assistant.config.Provider
 import com.sjaindl.assistant.di.assistantModule
 import mobile_rag.composeapp.generated.resources.Res
@@ -21,7 +20,7 @@ val appModule = module {
     single {
         AssistantConfig(
             provider = Provider.Flowise(
-                baseUrl = "https://$DOMAIN/flowise/api/v1/prediction/787f6f61-5194-451e-b0a9-45df5d21f9f7",
+                baseUrl = "https://www.hvtdpstainz.at/flowise/api/v1/prediction/787f6f61-5194-451e-b0a9-45df5d21f9f7",
                 apiKey = BuildConfig.FLOWISE_API_KEY,
             ),
             appBarTitle = Res.string.appName,

@@ -78,7 +78,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.compose.multiplatform.navigation)
 
-            implementation(project(":assistant"))
+            implementation(libs.mobile.rag.assistant)
         }
 
         commonTest.dependencies {

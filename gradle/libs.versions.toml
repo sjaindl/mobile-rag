@@ -22,6 +22,7 @@ napierVersion = "2.7.1"
 sqldelight = "2.3.2"
 buildkonfig = "6.0.9"
 dokka = "2.2.0"
+mobile_rag_assistant = "1.0.3"
 
 [libraries]
 androidx_lifecycle_runtime_compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx_lifecycle" }
@@ -66,6 +67,7 @@ sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", ver
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+mobile-rag-assistant = { module = "io.github.sjaindl:mobile-rag-assistant", version.ref = "mobile_rag_assistant" }
 
 [bundles]
 compose = ["compose_runtime", "compose_foundation", "compose_material3", "compose_ui", "compose_components_resources", "compose_ui_tooling_preview", "compose_material_icons_extended"]
